@@ -43,5 +43,20 @@
             Assert.False(result);
         }
 
+        [Fact]
+        public void RemoveWhitespace()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.RemoveWhitespace("This is a test");
+
+            // Assert.
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal("Thisisatest", result);
+        }
+
     }
 }
