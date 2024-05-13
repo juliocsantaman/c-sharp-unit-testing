@@ -94,7 +94,35 @@
             // Arrange.
             var strOperation = new StringOperations();
 
+            // Assert.
             Assert.ThrowsAny<ArgumentNullException>(() => strOperation.GetStringLength(null));
+        }
+
+        [Fact]
+        public void TruncateString()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.TruncateString("Julio", 2);
+
+            // Assert.
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal("Ju", result);
+        }
+
+        [Fact]
+        public void TruncateString_Exception()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Assert.
+            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperation.TruncateString(null, 0));
+
+
         }
 
 
