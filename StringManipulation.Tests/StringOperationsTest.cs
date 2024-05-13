@@ -58,5 +58,45 @@
             Assert.Equal("Thisisatest", result);
         }
 
+        [Fact]
+        public void QuantintyInWords()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.QuantintyInWords("Laptop", 1);
+
+            // Assert.
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.StartsWith("one", result.ToLower());
+            Assert.Contains("laptop", result.ToLower());
+            Assert.Equal("One laptop".ToLower(), result.ToLower());
+        }
+
+        [Fact]
+        public void GetStringLength()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.GetStringLength("Julio");
+
+            // Assert.
+            Assert.Equal(5, result);
+        }
+
+        [Fact]
+        public void GetStringLength_Exception()
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            Assert.ThrowsAny<ArgumentNullException>(() => strOperation.GetStringLength(null));
+        }
+
+
     }
 }
