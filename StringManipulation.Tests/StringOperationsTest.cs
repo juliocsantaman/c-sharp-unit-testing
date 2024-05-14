@@ -1,4 +1,6 @@
-﻿namespace StringManipulation.Tests
+﻿using Humanizer;
+
+namespace StringManipulation.Tests
 {
     public class StringOperationsTest
     {
@@ -123,6 +125,22 @@
             Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperation.TruncateString(null, 0));
 
 
+        }
+
+        [Theory]
+        [InlineData("V", 5)]
+        [InlineData("X", 10)]
+        [InlineData("L", 50)]   
+        public void FromRomanToNumber(string input, int expected)
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.FromRomanToNumber(input);
+
+            // Assert.
+            Assert.Equal(expected, result);
         }
 
 
