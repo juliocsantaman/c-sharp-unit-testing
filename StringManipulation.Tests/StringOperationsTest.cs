@@ -143,6 +143,32 @@ namespace StringManipulation.Tests
             Assert.Equal(expected, result);
         }
 
+        [Theory]
+        [InlineData("ana", true)]
+        [InlineData("julio", false)]
+        [InlineData("cesar", false)]
+        public void IsPalindrome(string input, bool expected)
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.IsPalindrome(input);
+
+            // Assert.
+            if(expected)
+            {
+                Assert.True(result);
+            }
+
+            if(!expected)
+            {
+                Assert.False(result);
+            }
+
+        
+        }
+
 
     }
 }
