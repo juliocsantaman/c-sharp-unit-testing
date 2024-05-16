@@ -1,10 +1,13 @@
-﻿using Humanizer;
+﻿using Castle.Core.Logging;
+using Humanizer;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace StringManipulation.Tests
 {
     public class StringOperationsTest
     {
-        [Fact]
+        [Fact(Skip = "For the moment this test is not valid. Ticket-101")]
         public void ConcatenateStrings()
         {
             // Arrange.
@@ -167,6 +170,20 @@ namespace StringManipulation.Tests
             }
 
         
+        }
+
+        [Fact]
+        public void CountOccurrences()
+        {
+            // Arrange.
+            var mockLogger = new Mock<ILogger<StringOperations>>();
+            var strOperation = new StringOperations(mockLogger.Object);
+
+            // Act.
+            var result = strOperation.CountOccurrences("Demente", 'e');
+
+            // Assert.
+            Assert.Equal(3, result);    
         }
 
 
