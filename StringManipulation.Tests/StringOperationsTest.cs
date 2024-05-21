@@ -138,20 +138,48 @@ namespace StringManipulation.Tests
             Assert.ThrowsAny<ArgumentNullException>(() => strOperation.GetStringLength(null));
         }
 
-        [Fact]
-        public void TruncateString()
+        //[Fact]
+        //public void TruncateString()
+        //{
+        //    // Arrange.
+        //    var strOperation = new StringOperations();
+
+        //    // Act.
+        //    var result = strOperation.TruncateString("Julio", 2);
+
+        //    // Assert.
+        //    Assert.NotNull(result);
+        //    Assert.NotEmpty(result);
+        //    Assert.Equal("Ju", result);
+        //}
+
+        [Theory]
+        [InlineData(null, 1, null)]
+        [InlineData("", 2, "")]
+        [InlineData("hola", 4, "hola")]
+        [InlineData("julio", 2, "ju")]
+        public void TruncateString(string input, int maxLength, string expected)
         {
             // Arrange.
             var strOperation = new StringOperations();
 
             // Act.
-            var result = strOperation.TruncateString("Julio", 2);
+            var result = strOperation.TruncateString(input, maxLength);
 
             // Assert.
-            Assert.NotNull(result);
-            Assert.NotEmpty(result);
-            Assert.Equal("Ju", result);
+            if (string.IsNullOrEmpty(result) || maxLength >= input.Length)
+            {
+                Assert.Equal(expected, result);
+            } else
+            {
+                
+                Assert.NotNull(result);
+                Assert.NotEmpty(result);
+                Assert.Equal(expected, result);
+            }
+
         }
+
 
         [Fact]
         public void TruncateString_Exception()
@@ -160,7 +188,7 @@ namespace StringManipulation.Tests
             var strOperation = new StringOperations();
 
             // Assert.
-            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperation.TruncateString(null, 0));
+            Assert.ThrowsAny<ArgumentOutOfRangeException>(() => strOperation.TruncateString("julio", 0));
 
 
         }
