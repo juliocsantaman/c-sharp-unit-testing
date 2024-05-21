@@ -221,6 +221,23 @@ namespace StringManipulation.Tests
             Assert.Equal(3, result);    
         }
 
+        [Theory]
+        [InlineData("car", "cars")]
+        [InlineData("pen", "pens")]
+        public void Pluralize(string input, string expected) 
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.Pluralize(input);
+
+            // Assert.
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal(expected, result);
+        }
+
         [Fact]
         public void ReadFile()
         {
