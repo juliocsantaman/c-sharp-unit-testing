@@ -22,6 +22,41 @@ namespace StringManipulation.Tests
             Assert.Equal("Hello World", result);
         }
 
+        //[Fact]
+        //public void ReverseString() 
+        //{
+        //    // Arrange.
+        //    var strOperation = new StringOperations();
+
+        //    // Act.
+        //    var result = strOperation.ReverseString("julio");
+
+        //    // Assert.
+        //    var expected = "oiluj";
+        //    Assert.NotEmpty(result);
+        //    Assert.NotNull(result);
+        //    Assert.Equal(expected, result);
+        //}
+
+
+        [Theory]
+        [InlineData("julio", "oiluj")]
+        [InlineData("ana", "ana")]
+        public void ReverseString(string input, string expected)
+        {
+            // Arrange.
+            var strOperation = new StringOperations();
+
+            // Act.
+            var result = strOperation.ReverseString(input);
+
+            // Assert.
+            
+            Assert.NotEmpty(result);
+            Assert.NotNull(result);
+            Assert.Equal(expected, result);
+        }
+
         [Fact]
         public void IsPalindrome_True()
         {
