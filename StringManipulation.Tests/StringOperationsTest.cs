@@ -284,6 +284,21 @@ namespace StringManipulation.Tests
 
         }
 
+        [Fact]
+        public void GreatestNumber()
+        {
+            // Arrange.
+            StringOperations strOperations = new StringOperations();
+            int[] numbers = new int[4] { 4, 1, 2, 100 };
+            int expected = 100;
+            
+            // Act.
+            int result = strOperations.GreatestNumber(numbers);
+
+            // Assert.
+            Assert.Equal(expected, result);
+        }
+
 
     }
 }

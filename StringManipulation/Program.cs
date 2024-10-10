@@ -15,6 +15,13 @@ internal class Program
         // Create a logger
         var logger = loggerFactory.CreateLogger<StringOperations>();
 
+        StringOperations stringOperations = new StringOperations(logger);
+
+        //int[] numbers = new int[3] { 5, 10, 7 };
+        //int greatestNumber = stringOperations.GreatestNumber(numbers);
+        //Console.WriteLine("Greatest number: " + greatestNumber);
+
+
 
         while (true)
         {
@@ -33,7 +40,8 @@ internal class Program
 
             int optionSelected = int.Parse(Console.ReadLine());
 
-            StringOperations stringOperations = new StringOperations(logger);
+
+           
 
             switch (optionSelected)
             {

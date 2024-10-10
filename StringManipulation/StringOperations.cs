@@ -105,5 +105,19 @@ namespace StringManipulation
             return fileReader.ReadString(fileName);
         }
 
+        public int GreatestNumber(int[] numbers)
+        {
+            int result = 0;
+            foreach (var item in numbers)
+            {
+                if(item > result)
+                {
+                    result = item;
+                }
+            }
+
+            return result;
+        }
+
     }
 }
